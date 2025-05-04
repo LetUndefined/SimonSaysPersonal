@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", system-ui;
+}
+
+/* play section with the buttons */
+.playSection {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 6rem;
+  background-color: rgb(0, 0, 0);
+}
+
+.points-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100px;
+  height: 60px;
+  border-radius: 10px;
+  line-height: 1.5rem;
+}
+
+#points {
+  font-size: 14px;
+  text-align: center;
+}
+
+.container-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.container-buttons button {
+  padding: 6rem;
+}
+
+.box {
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.lit {
+  opacity: 1;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 1);
+  transition: box-shadow 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* button colors */
+#greenButton {
+  background-color: rgba(0, 128, 0, 0.5);
+  border: 4px solid rgba(0, 128, 0, 1);
+}
+
+#greenButton.hover-enabled:hover {
+  background-color: rgba(0, 128, 0, 1);
+}
+#redButton {
+  background-color: rgba(255, 0, 0, 0.5);
+  border: 4px solid rgba(255, 0, 0, 1);
+}
+#redButton.hover-enabled:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+#yellowButton {
+  background-color: rgba(255, 255, 0, 0.5);
+  border: 4px solid rgba(255, 255, 0, 1);
+}
+
+#yellowButton.hover-enabled:hover {
+  background-color: rgba(255, 255, 0, 1);
+}
+
+#blueButton {
+  background-color: rgba(0, 0, 255, 0.5);
+  border: 4px solid rgba(0, 0, 255, 1);
+}
+
+#blueButton.hover-enabled:hover {
+  background-color: rgba(0, 0, 255, 1);
+}
+.container-Ui {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.container-Ui button {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.container-Ui button:hover {
+  background-color: rgb(44, 172, 27);
+  box-shadow: 1px 0px 4px black;
+  border: 1px solid black;
+  cursor: pointer;
+}
