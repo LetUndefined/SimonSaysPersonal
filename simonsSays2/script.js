@@ -1,4 +1,4 @@
-import { greenButton, redButton, yellowButton, blueButton, start, nextRound, gameButtons, reset, points } from "./selectors.js";
+import { greenButton, redButton, yellowButton, blueButton, start, gameButtons, reset, points } from "./selectors.js";
 
 let pattern = [];
 let player = [];
@@ -9,7 +9,7 @@ let patternAmount = 4;
 let randomButton;
 
 function patternDecider() {
-  return (randomButton = Math.ceil(Math.random() * 4)); /*Belangrijk dat dit vier is, want dit is het totaal aantal knoppen*/
+  return (randomButton = Math.ceil(Math.random() * patternAmount));
 }
 
 function createPattern() {
@@ -77,21 +77,31 @@ function registerColorButton() {
           player.push(4);
           break;
       }
-      console.log(player);
+      checkResult(player, pattern);
     });
   });
 }
 
-function checkResult(player, pattern) {
-  console.log(player, pattern);
-  if (JSON.stringify(player) === JSON.stringify(pattern)) {
-    score++;
-    points.textContent = `Points ${score}`;
-    return true;
-  } else {
-    alert("Dat was fout, Game over!");
-    resetGame();
-    return false;
+function checkResult(playerNumber, patternNumber) {
+  for (let i = 0; i < player.length; i++) {
+    if (playerNumber[i] === patternNumber[i]) {
+      console.log("Correct number!");
+    } else {
+      alert("Wrong! Game Over!");
+      resetGame();
+      return;
+    }
+
+    if (JSON.stringify(player) === JSON.stringify(pattern)) {
+      score++;
+      points.textContent = `Points ${score}`;
+      player = [];
+      playNextRound();
+      disableButton();
+      setTimeout(() => {
+        lightButton();
+      }, 2000);
+    }
   }
 }
 
@@ -99,20 +109,6 @@ start.addEventListener("click", () => {
   createPattern();
   lightButton();
   start.disabled = true;
-});
-
-nextRound.addEventListener("click", () => {
-  if (checkResult(player, pattern)) {
-    playNextRound();
-    disableButton();
-    setTimeout(() => {
-      lightButton();
-    }, 2000);
-    player = [];
-  } else {
-    disableButton();
-    return;
-  }
 });
 
 reset.addEventListener("click", () => {
@@ -125,13 +121,11 @@ function enableButton() {
     button.classList.add("hover-enabled");
     button.style.cursor = "pointer";
     button.disabled = false;
-    nextRound.disabled = false;
     reset.disabled = false;
   });
 }
 
 function disableButton() {
-  nextRound.disabled = true;
   gameButtons.forEach((button) => {
     button.classList.remove("hover-enabled");
     button.style.cursor = "default";
@@ -145,8 +139,8 @@ function resetGame() {
   disableButton();
   pattern = [];
   start.disabled = false;
-
   score = 0;
+  points.textContent = `Points ${score}`;
 }
 
 registerColorButton();
