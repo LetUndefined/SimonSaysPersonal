@@ -104,7 +104,7 @@
   transition: 0.2s ease-in-out;
 }
 
-.container-Ui button:hover {
+.container-Ui button:hover:enabled {
   background-color: rgb(44, 172, 27);
   box-shadow: 1px 0px 4px black;
   border: 1px solid black;

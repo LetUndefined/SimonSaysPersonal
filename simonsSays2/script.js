@@ -8,10 +8,12 @@ let patternAmount = 4;
 
 let randomButton;
 
+// generates 4 random numbers
 function patternDecider() {
   return (randomButton = Math.ceil(Math.random() * patternAmount));
 }
 
+// Pushes 4 numbers into an Array
 function createPattern() {
   for (let i = 0; i < patternAmount; i++) {
     patternDecider();
@@ -20,12 +22,14 @@ function createPattern() {
   }
 }
 
+//Functionality to start the next round, creates an additional number and pushes to pattern array
 function playNextRound() {
   randomButton = Math.ceil(Math.random() * 4);
   pattern.push(randomButton);
   console.log(pattern);
 }
 
+//returns the button that is corresponding to the number from the pattern, will be used to flash the colors on the game
 function getButtonByNumber(num) {
   switch (num) {
     case 1:
@@ -39,6 +43,8 @@ function getButtonByNumber(num) {
   }
 }
 
+// function to light the colors from the game. adds classlist to flash the button. previous function is used to find the correct
+// colored button to flash
 function lightButton() {
   pattern.forEach((num, index) => {
     setTimeout(() => {
@@ -50,12 +56,15 @@ function lightButton() {
     }, index * 800);
   });
 
+  // buttons were instantly enabled after the buttons flashed, created a delay for the button enabling
   const totalTime = pattern.length * 800;
   setTimeout(() => {
     enableButton();
   }, totalTime);
 }
 
+//function to track each button press on the game from the player. After each press a corresponding number is pushed into
+// the array and instantly checked to the pattern array. 
 function registerColorButton() {
   gameButtons.forEach((number) => {
     number.addEventListener("click", () => {
@@ -82,6 +91,7 @@ function registerColorButton() {
   });
 }
 
+//checking result from the player input against the pattern creation
 function checkResult(playerNumber, patternNumber) {
   for (let i = 0; i < player.length; i++) {
     if (playerNumber[i] === patternNumber[i]) {
