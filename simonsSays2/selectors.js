@@ -1,8 +1,9 @@
-export const greenButton = document.getElementById("greenButton");
-export const redButton = document.getElementById("redButton");
-export const yellowButton = document.getElementById("yellowButton");
-export const blueButton = document.getElementById("blueButton");
-export const start = document.getElementById("start");
+export const startButtonModal = document.getElementById("start-modal-button");
+export const modal = document.getElementById("modal");
+export const greenButton = document.getElementById("green-button");
+export const redButton = document.getElementById("red-button");
+export const yellowButton = document.getElementById("yellow-button");
+export const blueButton = document.getElementById("blue-button");
 export const gameButtons = document.querySelectorAll(".box");
 export const reset = document.getElementById("reset");
 export const points = document.getElementById("points");

@@ -7,24 +7,46 @@
     <script type="module" src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet" />
     <title>Simon Says</title>
   </head>
   <body>
     <main>
-      <section class="playSection">
+      <section class="play-section">
         <div class="points-container">
           <h2 id="points">Points 0</h2>
         </div>
         <div class="container-buttons">
-          <button class="box" id="greenButton"></button>
-          <button class="box" id="redButton"></button>
-          <button class="box" id="yellowButton"></button>
-          <button class="box" id="blueButton"></button>
+          <button class="box" id="green-button"></button>
+          <button class="box" id="red-button"></button>
+          <button class="box" id="yellow-button"></button>
+          <button class="box" id="blue-button"></button>
         </div>
-        <div class="container-Ui">
-          <button id="start">Start</button>
+        <div class="container-ui">
           <button id="reset">Reset</button>
+          <button id="more">More</button>
+        </div>
+        <div id="modal" class="modal-content">
+          <div class="modal-header">
+            <p>
+              <span class="c1">S</span>
+              <span class="c2">I</span>
+              <span class="c3">M</span>
+              <span class="c4">O</span>
+              <span class="c5">N</span>
+            </p>
+            <p>
+              <span class="c6">S</span>
+              <span class="c7">A</span>
+              <span class="c8">Y</span>
+              <span class="c9">S</span>
+            </p>
+          </div>
+          <div class="modal-body">
+            <button id="start-modal-button" class="start">Start</button>
+            <button class="help">Help</button>
+            <button class="highscore">Highscore</button>
+          </div>
         </div>
       </section>
     </main>

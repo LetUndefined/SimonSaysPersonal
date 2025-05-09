@@ -2,11 +2,15 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Press Start 2P", system-ui;
+
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
 }
 
 /* play section with the buttons */
-.playSection {
+.play-section {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -48,48 +52,45 @@
   transition: 0.2s ease-in-out;
 }
 
-.lit {
-  opacity: 1;
-  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 1);
-  transition: box-shadow 0.2s ease-in-out;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
 /* button colors */
-#greenButton {
+#green-button {
   background-color: rgba(0, 128, 0, 0.5);
   border: 4px solid rgba(0, 128, 0, 1);
 }
 
-#greenButton.hover-enabled:hover {
+#green-button.hover-enabled:hover {
   background-color: rgba(0, 128, 0, 1);
+  cursor: pointer;
 }
-#redButton {
+#red-button {
   background-color: rgba(255, 0, 0, 0.5);
   border: 4px solid rgba(255, 0, 0, 1);
 }
-#redButton.hover-enabled:hover {
+#red-button.hover-enabled:hover {
   background-color: rgba(255, 0, 0, 1);
+  cursor: pointer;
 }
 
-#yellowButton {
+#yellow-button {
   background-color: rgba(255, 255, 0, 0.5);
   border: 4px solid rgba(255, 255, 0, 1);
 }
 
-#yellowButton.hover-enabled:hover {
+#yellow-button.hover-enabled:hover {
   background-color: rgba(255, 255, 0, 1);
+  cursor: pointer;
 }
 
-#blueButton {
+#blue-button {
   background-color: rgba(0, 0, 255, 0.5);
   border: 4px solid rgba(0, 0, 255, 1);
 }
 
-#blueButton.hover-enabled:hover {
+#blue-button.hover-enabled:hover {
   background-color: rgba(0, 0, 255, 1);
+  cursor: pointer;
 }
-.container-Ui {
+.container-ui {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,16 +98,143 @@
   gap: 2rem;
 }
 
-.container-Ui button {
+.container-ui button {
   width: 100px;
   height: 50px;
   border-radius: 10px;
   transition: 0.2s ease-in-out;
 }
 
-.container-Ui button:hover:enabled {
+.container-ui button:hover:enabled {
   background-color: rgb(44, 172, 27);
   box-shadow: 1px 0px 4px black;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.lit {
+  opacity: 1;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 1);
+  transition: box-shadow 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-content {
+  background-color: rgb(0, 0, 0);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+}
+
+.modal-hide {
+  transform: translate(-100%); /* Moves it upward */
+}
+
+.modal-header {
+  font-size: 60px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  letter-spacing: -3px;
+  text-shadow: 1px 1px 1px white;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-body button {
+  width: 200px;
+  height: 40px;
+  transition: 0.2s ease-in-out;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+  border: 1px solid white;
+  background-color: black;
+}
+
+.start:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+.help:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.highscore:hover {
+  background-color: rgb(205, 205, 0);
+  cursor: pointer;
+}
+
+.c1 {
+  color: green;
+}
+
+.c2 {
+  color: red;
+}
+
+.c3 {
+  color: yellow;
+}
+
+.c4 {
+  color: blue;
+}
+
+.c5 {
+  color: green;
+}
+
+.c6 {
+  color: red;
+}
+
+.c7 {
+  color: yellow;
+}
+
+.c8 {
+  color: blue;
+}
+
+.c9 {
+  color: green;
+}
+
+@media (max-width: 640px) {
+  .play-section {
+    overflow: hidden;
+  }
+
+  .container-buttons button {
+    padding: 4rem;
+  }
+  .modal-header {
+    font-size: 40px;
+  }
+
+  .container-ui {
+    gap: 1rem;
+  }
+  .container-ui button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+  }
 }

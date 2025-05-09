@@ -1,4 +1,4 @@
-import { greenButton, redButton, yellowButton, blueButton, start, gameButtons, reset, points } from "./selectors.js";
+import { greenButton, redButton, yellowButton, blueButton, reset, startButtonModal, modal, gameButtons, points } from "./selectors.js";
 
 let pattern = [];
 let player = [];
@@ -20,13 +20,6 @@ function createPattern() {
     pattern.push(randomButton);
     console.log(pattern);
   }
-}
-
-//Functionality to start the next round, creates an additional number and pushes to pattern array
-function playNextRound() {
-  randomButton = Math.ceil(Math.random() * 4);
-  pattern.push(randomButton);
-  console.log(pattern);
 }
 
 //returns the button that is corresponding to the number from the pattern, will be used to flash the colors on the game
@@ -64,7 +57,7 @@ function lightButton() {
 }
 
 //function to track each button press on the game from the player. After each press a corresponding number is pushed into
-// the array and instantly checked to the pattern array. 
+// the array and instantly checked to the pattern array.
 function registerColorButton() {
   gameButtons.forEach((number) => {
     number.addEventListener("click", () => {
@@ -91,12 +84,17 @@ function registerColorButton() {
   });
 }
 
+//Functionality to start the next round, creates an additional number and pushes to pattern array
+function playNextRound() {
+  randomButton = Math.ceil(Math.random() * 4);
+  pattern.push(randomButton);
+  console.log(pattern);
+}
+
 //checking result from the player input against the pattern creation
 function checkResult(playerNumber, patternNumber) {
   for (let i = 0; i < player.length; i++) {
-    if (playerNumber[i] === patternNumber[i]) {
-      console.log("Correct number!");
-    } else {
+    if (playerNumber[i] !== patternNumber[i]) {
       alert("Wrong! Game Over!");
       resetGame();
       return;
@@ -115,21 +113,21 @@ function checkResult(playerNumber, patternNumber) {
   }
 }
 
-start.addEventListener("click", () => {
+startButtonModal.addEventListener("click", () => {
+  modal.style.display = "none";
   createPattern();
-  lightButton();
-  start.disabled = true;
+  setTimeout(() => {
+    lightButton();
+  }, 1000);
 });
 
 reset.addEventListener("click", () => {
-  points.textContent = `Points 0`;
   resetGame();
 });
 
 function enableButton() {
   gameButtons.forEach((button) => {
     button.classList.add("hover-enabled");
-    button.style.cursor = "pointer";
     button.disabled = false;
     reset.disabled = false;
   });
@@ -138,17 +136,16 @@ function enableButton() {
 function disableButton() {
   gameButtons.forEach((button) => {
     button.classList.remove("hover-enabled");
-    button.style.cursor = "default";
     button.disabled = true;
     reset.disabled = true;
   });
 }
 
 function resetGame() {
+  modal.style.display = "flex";
   player = [];
   disableButton();
   pattern = [];
-  start.disabled = false;
   score = 0;
   points.textContent = `Points ${score}`;
 }
